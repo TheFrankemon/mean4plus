@@ -10,14 +10,14 @@ import { DataService } from './data.service';
 export class AppComponent {
   title = 'app';
   
-  // Define a users property to hold our user data
-   users: Array<any>;
+  // Define a clients property to hold our client data
+   clients: Array<any>;
   
   // Create an instance of the DataService through dependency injection
   constructor(private _dataService: DataService) {
     
-    // Access the Data Service's getUsers() method we defined
-    this._dataService.getUsers()
-      .subscribe(res => this.users = res);
+    // Access the Data Service's getClients() method we defined
+    this._dataService.getClients()
+      .subscribe(res => this.clients = res);
   }
 }

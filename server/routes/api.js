@@ -26,14 +26,14 @@ let response = {
     message: null
 };
 
-// Get users
-router.get('/users', (req, res) => {
+// Get clients
+router.get('/clients', (req, res) => {
     connection((db) => {
-        db.collection('users')
+        db.collection('clients')
             .find()
             .toArray()
-            .then((users) => {
-                response.data = users;
+            .then((clients) => {
+                response.data = clients;
                 res.json(response);
             })
             .catch((err) => {
