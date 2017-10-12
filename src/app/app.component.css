@@ -1,4 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+div {
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+}
+
 img {
-    width: 50%;
-    max-width: 500px;
+	width: 80%;
+	max-width: 400px;
+}
+
+#client {
+	float: left;
+	max-width:500px;
+	height: 100%;
+	background:#ECECEC;
+	border: solid 1px;
+}
+
+#clients {
+	width: 100%;
+	margin: 5em auto;
+	padding: 0;
+	background:#fff;
 }
