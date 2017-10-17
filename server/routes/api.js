@@ -34,6 +34,11 @@ router.get('/clients', (req, res) => {
             .toArray()
             .then((clients) => {
                 response.data = clients;
+                // To avoid long IMG string:
+                // response.data.forEach(function(elem) {
+                //     elem.img2 = "...";
+                //     elem.img1 = "...";
+                // }, this);
                 res.json(response);
             })
             .catch((err) => {
