@@ -6,21 +6,23 @@ div {
 }
 
 img {
-	width: 80%;
+	width: 90%;
 	max-width: 400px;
 }
 
 #client {
 	float: left;
-	max-width:500px;
-	height: 100%;
+	max-width:380px;
+	width: 70%;
 	background:#ECECEC;
-	border: solid 1px;
+	margin: 0.5em auto;
+	border: 2px solid white;
+	border-radius: 10px;
 }
 
 #clients {
-	width: 100%;
-	margin: 5em auto;
+	width: 90%;
+	margin: 0 auto;
 	padding: 0;
 	background:#fff;
 }
