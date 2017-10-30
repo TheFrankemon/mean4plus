@@ -6,14 +6,15 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule
-  ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpModule
+	],
+	providers: [DataService],
+	bootstrap: [AppComponent]
 })
+
 export class AppModule { }
