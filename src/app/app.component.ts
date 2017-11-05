@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-import { DataService } from './data.service';
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
+import { Observable } from "rxjs/Observable";
 
 @Component({
 	selector: 'app-root',
@@ -8,15 +8,10 @@ import { DataService } from './data.service';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'app';
-
 	// Define a clients property to hold our client data
-	clients: Array<any>;
+	clients: FirebaseListObservable<any[]>;
 
-	// Create an instance of the DataService through dependency injection
-	constructor(private _dataService: DataService) {
-		// Access the Data Service's getClients() method we defined
-		this._dataService.getClients()
-			.subscribe(res => this.clients = res);
-  }
+	constructor(public af: AngularFireDatabase) {
+		this.clients = af.list('clients');
+	}
 }

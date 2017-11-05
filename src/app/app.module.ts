@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-
 import { HttpModule } from '@angular/http';
-import { DataService } from './data.service';
+
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from "angularfire2/database-deprecated";
+import * as c from "./firebaseconfig.json";
+
+const config = (<any>c);
 
 @NgModule({
 	declarations: [
@@ -11,9 +15,10 @@ import { DataService } from './data.service';
 	],
 	imports: [
 		BrowserModule,
-		HttpModule
+		HttpModule,
+		AngularFireModule.initializeApp(config),
+		AngularFireDatabaseModule
 	],
-	providers: [DataService],
 	bootstrap: [AppComponent]
 })
 

@@ -1,12 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
 	<h1>Clients @MongoDB</h1>
-	<div *ngFor="let client of clients" id="clients">
+	<div *ngFor="let client of clients | async" id="clients">
 		<div id="client">
 			<h2>{{ client.name }}</h2>
-			<h6>{{ client._id }}</h6>
-			<img src="data:image/png;base64,{{client.img1}}" alt="image"/>
-			<img src="data:image/png;base64,{{client.img2}}" alt="image"/>
+			<img src="{{client.img1}}" alt="image"/>
+			<img src="{{client.img2}}" alt="image"/>
 		</div>
 	</div>
 </div>
