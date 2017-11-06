@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+div {
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	color: #EEE;
+}
+
+body {
+    background-color: black;
+}
+
+button {
+	background-color: #666;
+	color: #BBB;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+button:hover {
+	background-color: #BBB;
+	color: #EEE;
+}
+
+.active {
+	background-color: #888;
+	color: orange;
+}
+
+img {
+	width: 90%;
+}
+
+#client {
+	float: left;
+	background:#555;
+	margin: 0.5em auto;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+#clients {
+	margin: 0 auto;
+	padding: 0;
+}

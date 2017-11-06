@@ -1,34 +1,12 @@
 img {
-	width: 90%;
 	max-width: 400px;
 }
 
 #client {
-	float: left;
 	max-width:380px;
 	width: 70%;
-	background:#ECECEC;
-	margin: 0.5em auto;
-	border: 2px solid white;
-	border-radius: 10px;
 }
 
 #clients {
 	width: 90%;
-	margin: 0 auto;
-	padding: 0;
-	background:#fff;
-}
-
-button {
-	background-color: #eee;
-	border: none;
-	padding: 5px 10px;
-	border-radius: 4px;
-	cursor: pointer;
-	cursor: hand;
-}
-
-button:hover {
-	background-color: #cfd8dc;
 }

@@ -1,8 +1,8 @@
 <div>
-	<h1>Clients @MongoDB</h1>
+	<h1>Clients @UPBSmartBooth</h1>
 	<nav>
-		<button routerLink="/">Incoming</button>
-		<button routerLink="/completed">Completed</button>
+		<button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
+		<button routerLink="/completed" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Completed</button>
 	</nav>
 	<router-outlet></router-outlet>
 </div>
