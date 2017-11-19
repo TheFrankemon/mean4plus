@@ -1,9 +1,13 @@
+<nav>
+	<button routerLink="/incoming" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
+	<button routerLink="/completed" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Completed</button>
+</nav>
 <div *ngFor="let client of clients | async" id="clients">
-    <div id="client">
-        <button (click)="hide(client.$key)">X</button>
-        <h2>{{ client.name }}</h2>
-        <h6>{{ client.ts }}</h6>
-        <img src="{{client.img1}}" alt="image"/>
-        <img src="{{client.img2}}" alt="image"/>
-    </div>
+	<div id="client">
+		<button (click)="hide(client.$key)">X</button>
+		<h2>{{ client.name }}</h2>
+		<h6>{{ client.ts }}</h6>
+		<img src="{{client.img1}}" alt="image"/>
+		<img src="{{client.img2}}" alt="image"/>
+	</div>
 </div>
