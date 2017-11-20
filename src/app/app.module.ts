@@ -8,6 +8,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CompletedComponent } from './completed.component';
 import { IncomingComponent } from './incoming.component';
 import { LoginComponent } from './login.component';
+import { AuthService } from './auth.service';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database-deprecated";
@@ -17,8 +18,8 @@ import * as c from "./firebaseconfig.json";
 const config = (<any>c);
 const appRoutes: Routes = [
 	{ path: '', component: LoginComponent },
-	{ path: 'incoming', component: IncomingComponent },
-	{ path: 'completed', component: CompletedComponent },
+	{ path: 'incoming', component: IncomingComponent, canActivate: [ AuthService ] },
+	{ path: 'completed', component: CompletedComponent, canActivate: [ AuthService ] },
 	{ path: '**',
 		redirectTo: '/'
 	}
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
 		IncomingComponent,
 		LoginComponent
 	],
+	providers: [AuthService],
 	bootstrap: [AppComponent]
 })
 
