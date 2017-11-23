@@ -21,7 +21,7 @@ const appRoutes: Routes = [
 	{ path: 'incoming', component: IncomingComponent, canActivate: [ AuthService ] },
 	{ path: 'completed', component: CompletedComponent, canActivate: [ AuthService ] },
 	{ path: '**',
-		redirectTo: '/'
+		redirectTo: ''
 	}
 ];
 

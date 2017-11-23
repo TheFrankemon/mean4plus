@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanActivate } from "@angular/router/src/interfaces";
 import { ActivatedRoute } from "@angular/router/src/router_state";
-import { Router } from "@angular/router";
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
@@ -28,7 +28,7 @@ export class AuthService implements CanActivate {
 			).catch(
 				(err) => {
 					console.log(err);
-					this.isLogged = true;
+					this.isLogged = false;
 			});
 
 		return this.isLogged;
@@ -36,13 +36,15 @@ export class AuthService implements CanActivate {
 
 	logOut() {
 		this.afAuth.auth.signOut();
+		this.isLogged = false;
+		this.router.navigate(['']);
 	}
 
 	canActivate(): boolean {
-		const isAuth = this.logIn(this.mail, this.pwd);
-		if(!isAuth){
-			this.router.navigate(['/']);
+		if (this.isLogged) {
+			return true; 
 		}
-		return isAuth;
+		this.router.navigate(['']);
+		return false;
 	}
 }
