@@ -3,7 +3,6 @@ import { CanActivate } from "@angular/router/src/interfaces";
 import { ActivatedRoute } from "@angular/router/src/router_state";
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { AngularFireAuth } from "angularfire2/auth";
-import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -11,9 +10,7 @@ export class AuthService implements CanActivate {
 	mail: string = "";
 	pwd: string = "";
 
-	constructor(public router: Router,
-		public afAuth: AngularFireAuth,
-		public af: AngularFireDatabase) {}
+	constructor(public router: Router, public afAuth: AngularFireAuth) {}
 
 	logIn(mail, pwd): boolean {
 		this.mail = mail;
