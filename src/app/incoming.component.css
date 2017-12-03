@@ -1,12 +1,20 @@
 img {
-	max-width: 400px;
+	max-width: 360px;
 }
 
 #client {
-	max-width:380px;
+	max-width:350px;
 	width: 70%;
 }
 
 #clients {
 	width: 90%;
+}
+
+h2 {
+	font-size: 1.5vw;
+}
+
+h6 {
+	font-size: 0.7vw;
 }

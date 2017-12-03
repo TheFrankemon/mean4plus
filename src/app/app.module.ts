@@ -17,7 +17,7 @@ import * as c from "./firebaseconfig.json";
 
 const config = (<any>c);
 const appRoutes: Routes = [
-	{ path: '', component: LoginComponent },
+	{ path: '', component: LoginComponent, pathMatch: 'full' },
 	{ path: 'incoming', component: IncomingComponent, canActivate: [ AuthService ] },
 	{ path: 'completed', component: CompletedComponent, canActivate: [ AuthService ] },
 	{ path: '**',
