@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './incoming.component.html',
@@ -9,7 +10,9 @@ import { AuthService } from './auth.service';
 export class IncomingComponent {
 	clients: FirebaseListObservable<any[]>;
 
-	constructor(public afDB: AngularFireDatabase, private authService : AuthService) {
+	constructor(public afDB: AngularFireDatabase,
+				private authService: AuthService,
+				private router: Router) {
 		this.clients = afDB.list('clients', {
 			query: {
 				orderByChild: 'isCompleted',
@@ -27,5 +30,9 @@ export class IncomingComponent {
 
 	logout() {
 		this.authService.logOut();
+	}
+
+	userForm() {
+		this.router.navigate(['newUser']);
 	}
 }

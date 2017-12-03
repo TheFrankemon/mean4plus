@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
 
-import { CompletedComponent } from './completed.component';
-import { IncomingComponent } from './incoming.component';
 import { LoginComponent } from './login.component';
+import { IncomingComponent } from './incoming.component';
+import { CompletedComponent } from './completed.component';
+import { UserFormComponent } from './userform.component';
 import { AuthService } from './auth.service';
 
 import { AngularFireModule } from "angularfire2";
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
 	{ path: '', component: LoginComponent, pathMatch: 'full' },
 	{ path: 'incoming', component: IncomingComponent, canActivate: [ AuthService ] },
 	{ path: 'completed', component: CompletedComponent, canActivate: [ AuthService ] },
+	{ path: 'newUser', component: UserFormComponent, canActivate: [ AuthService ] },
 	{ path: '**',
 		redirectTo: ''
 	}
@@ -40,9 +42,10 @@ const appRoutes: Routes = [
 	],
 	declarations: [
 		AppComponent,
-		CompletedComponent,
+		LoginComponent,
 		IncomingComponent,
-		LoginComponent
+		CompletedComponent,
+		UserFormComponent
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent]
