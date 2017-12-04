@@ -1,29 +1,20 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthService } from './auth.service';
-//import * as admin from "firebase-admin";
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { AuthService } from './auth.service';
 
 @Component({
   templateUrl: './userform.component.html'
 })
 export class UserFormComponent {
 	users: FirebaseListObservable<any[]>;
-	email = "";
-	password = "";
 	firstname = "";
 	lastname = "";
+	email = "";
+	password = "";
 	uid = "";
 
-	constructor(public afDB: AngularFireDatabase, private authService : AuthService) {
-		//var serviceAccount = require("./photosqupb-firebase-adminsdk-zpz00-99e0ecd4a9.json");
-		
-		//admin.initializeApp({
-		//  credential: admin.credential.cert(serviceAccount),
-		//  databaseURL: "https://photosqupb.firebaseio.com"
-		//});
-
+	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth, private authService: AuthService) {
 		this.users = afDB.list('users', {
 			query: {
 				orderByChild: 'isCompleted',
@@ -33,23 +24,23 @@ export class UserFormComponent {
 	}
 
 	createUser() {
-		let dname = this.firstname + " " + this.lastname;
-		//admin.auth().createUser({
-		//	email: this.email,
-		//	password: this.password,
-		//	displayName: dname
-		//})
-		//	.then(function(userRecord) {
-		//		// See the UserRecord reference doc for the contents of userRecord.
-		//		console.log("Successfully created new user:", userRecord.uid);
-		//		this.uid = userRecord.uid;
-		//	})
-		//	.catch(function(error) {
-		//		console.log("Error creating new user:", error);
-		//	});
-		
-		//this.afDB.database.ref('users/' + this.uid).set({
-		//	isAdmin: false
-		//});
+		this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
+			.then((userRecord) => {
+				// See the UserRecord reference doc for the contents of userRecord.
+				console.log("Successfully created new user:", userRecord.uid);
+				this.afDB.database.ref('users/' + userRecord.uid).set({
+					isAdmin: false
+				});
+
+				let dname = this.firstname + " " + this.lastname;
+				userRecord.updateProfile({
+					displayName: dname
+				})
+			})
+			.catch((error) => {
+				console.log("Error creating new user:", error.code, error.message);
+			});
+
+		this.authService.logOut();
 	}
 }
