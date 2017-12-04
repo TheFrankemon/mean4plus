@@ -20,12 +20,4 @@ export class CompletedComponent {
 			}
 		});
 	}
-
-	logout() {
-		this.authService.logOut();
-	}
-
-	userForm() {
-		this.router.navigate(['newUser']);
-	}
 }

@@ -27,12 +27,4 @@ export class IncomingComponent {
 			.then(_ => console.log('Update succeded!'))
 			.catch(err => console.log(err, 'Something happened at updating...'));
 	}
-
-	logout() {
-		this.authService.logOut();
-	}
-
-	userForm() {
-		this.router.navigate(['newUser']);
-	}
 }

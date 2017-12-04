@@ -52,8 +52,4 @@ export class UserFormComponent {
 		//	isAdmin: false
 		//});
 	}
-
-	logout() {
-		this.authService.logOut();
-	}
 }

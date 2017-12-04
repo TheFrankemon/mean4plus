@@ -1,4 +1,10 @@
 <div>
 	<h1>Clients @UPBSmartBooth</h1>
+	<nav *ngIf="authService.isLogged">
+		<button routerLink="/incoming" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
+		<button routerLink="/completed" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Completed</button>
+		<button *ngIf="authService.checkRole()" (click)="userForm()">Add User</button>
+		<button (click)="authService.logOut()"> Logout </button>	
+	</nav>
 	<router-outlet></router-outlet>
 </div>

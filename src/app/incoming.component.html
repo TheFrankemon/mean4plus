@@ -1,9 +1,3 @@
-<nav>
-	<button routerLink="/incoming" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
-	<button routerLink="/completed" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Completed</button>
-	<button *ngIf="authService.checkRole()" (click)="userForm()">Add User</button>
-	<button (click)="logout()"> Logout </button>	
-</nav>
 <div *ngFor="let client of clients | async" id="clients">
 	<div id="client">
 		<button (click)="hide(client.$key)">X</button>
