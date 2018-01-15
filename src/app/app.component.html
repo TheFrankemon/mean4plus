@@ -5,6 +5,7 @@
 		<button routerLink="/incoming" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
 		<button routerLink="/completed" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Completed</button>
 		<button *ngIf="authService.checkRole()" routerLink="/newUser" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Add User</button>
+		<button *ngIf="authService.checkRole()" routerLink="/eventLog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Event Log</button>
 		<button (click)="authService.logOut()"> Logout </button>	
 	</nav>
 	<router-outlet></router-outlet>

@@ -1,0 +1,14 @@
+<br/>
+<br/>
+<div id="events">
+	<div id="header">TIMESTAMP</div>
+	<div id="header">EVENT</div>
+	<div id="header">CLIENT</div>
+	<div id="header">USER</div>
+</div>	
+<div *ngFor="let event of events | async" id="events">
+	<div id="event">{{ event.ts }}</div>
+	<div id="event">{{ event.event }}</div>
+	<div id="event">{{ event.client }}</div>
+	<div id="event">{{ event.user }}</div>
+</div>

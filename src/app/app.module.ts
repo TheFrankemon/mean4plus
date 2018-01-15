@@ -9,6 +9,7 @@ import { LoginComponent } from './login.component';
 import { IncomingComponent } from './incoming.component';
 import { CompletedComponent } from './completed.component';
 import { UserFormComponent } from './userform.component';
+import { EventLogComponent } from './eventlog.component';
 import { AuthService } from './auth.service';
 
 import { AngularFireModule } from "angularfire2";
@@ -22,9 +23,8 @@ const appRoutes: Routes = [
 	{ path: 'incoming', component: IncomingComponent, canActivate: [ AuthService ] },
 	{ path: 'completed', component: CompletedComponent, canActivate: [ AuthService ] },
 	{ path: 'newUser', component: UserFormComponent, canActivate: [ AuthService ] },
-	{ path: '**',
-		redirectTo: ''
-	}
+	{ path: 'eventLog', component: EventLogComponent, canActivate: [ AuthService ] },
+	{ path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -45,7 +45,8 @@ const appRoutes: Routes = [
 		LoginComponent,
 		IncomingComponent,
 		CompletedComponent,
-		UserFormComponent
+		UserFormComponent,
+		EventLogComponent
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent]

@@ -35,6 +35,11 @@ img {
 	width: 90%;
 }
 
+#clients {
+	margin: 0 auto;
+	padding: 0;
+}
+
 #client {
 	float: left;
 	background:#555;
@@ -43,7 +48,25 @@ img {
 	border-radius: 10px;
 }
 
-#clients {
-	margin: 0 auto;
-	padding: 0;
+#events {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+#event {
+	background:#555;
+	border: 2px solid black;
+	border-radius: 1px;
+	text-align: left;
+}
+
+#event:nth-child(odd) {
+	background: #888;
+}
+
+#header {
+	background:#000;
+	border: 2px solid black;
+	border-radius: 1px;
+	text-align: center;
 }
