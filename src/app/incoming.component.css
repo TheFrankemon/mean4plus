@@ -18,3 +18,15 @@ h2 {
 h6 {
 	font-size: 0.7vw;
 }
+
+button {
+	width: 40%;
+}
+
+#select {
+	background-color: darkgreen;
+}
+
+#completed {
+	background-color: darkslateblue;
+}

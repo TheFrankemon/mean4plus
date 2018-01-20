@@ -1,6 +1,8 @@
 <div *ngFor="let client of clients | async" id="clients">
 	<div id="client">
-		<button (click)="hide(client.$key)">X</button>
+		<input [(ngModel)]="selectcolor">
+		<button id="select" [ngStyle]="{'background-color': selectcolor}" (click)="select(client.$key)">{{ selectvalue }}</button>
+		<button id="completed" (click)="hide(client.$key)">{{ completedvalue }}</button>
 		<h2>{{ client.name }}</h2>
 		<h6>{{ client.ts }}</h6>
 		<img src="{{client.img1}}" alt="image"/>
