@@ -21,9 +21,13 @@ export class IncomingComponent {
 		});
 	}
 
+	toggleSelect(user, key) {
+		!user ? this.select(key) : this.unselect(key) ;
+	}
+
 	select(key) {
 		this.clients
-			.update(key, { 
+			.update(key, {
 				user: this.afAuth.auth.currentUser.displayName,
 				userUID: this.userUID
 			})
@@ -35,8 +39,22 @@ export class IncomingComponent {
 			);
 	}
 
+	unselect(key) {
+		this.clients
+			.update(key, {
+				user: "",
+				userUID: ""
+			})
+			.then(_ =>
+				console.log('Update succeded!')
+			)
+			.catch(err =>
+				console.log(err, 'Something happened at updating...')
+			);
+	}
+
 	getColor(client): string {
-		if (client.userUID == "")
+		if (!client.userUID)
 			return 'darkgreen';
 
 		return this.sameUser(client) ? 'red' : 'green';

@@ -4,8 +4,9 @@
 			id="select" 
 			[disabled]="disableButton(client)" 
 			[ngStyle]="{'background-color': getColor(client)}" 
-			(click)="select(client.$key)">
-			Select<span *ngIf="client.user">ed <br/> by {{ client.user }}</span>
+			(click)="toggleSelect(client.user, client.$key)">
+			<span *ngIf="!client.user">Select</span>
+			<span *ngIf="client.user">Selected by<br/>{{ client.user }}</span>
 		</button>
 		<button 
 			id="completed" 
