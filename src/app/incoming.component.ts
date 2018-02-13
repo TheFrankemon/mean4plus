@@ -13,9 +13,11 @@ export class IncomingComponent {
 	selectcolor = "darkgreen";
 	dbUser = "";
 	loggedUser = "";
+	userUID = "";
 	key = "";
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
+		this.userUID = this.afAuth.auth.currentUser.uid;
 		this.clients = afDB.list('clients', {
 			query: {
 				orderByChild: 'isCompleted',
@@ -27,22 +29,30 @@ export class IncomingComponent {
 	select(key) {
 		this.loggedUser = this.afAuth.auth.currentUser.displayName;
 		this.key = key;
-		this.clients.update(key, { user: this.loggedUser })
+
+		this
+			.clients.update(key, { 
+				user: this.loggedUser,
+				userUID: this.userUID
+			})
 			.then(_ =>
 				console.log('Update succeded!')
 			)
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
-		
-		this.afDB.database.ref('clients/' + key + '/user').once('value')
-			.then(snapshot => {
-				this.dbUser = snapshot.val();
-				this.selectvalue = "Selected by " + this.dbUser;
+	}
 
-				//Returns true for the user who selected the client, for everybody else returns false.
-				this.selectcolor = (this.dbUser == this.loggedUser) ? "green" : "darkgrey";
-			});
+	getColor(client) {
+		return this.sameUser(client) ? 'red' : 'green';
+	}
+
+	disableButton(client) {
+		return this.sameUser(client);
+	}
+
+	private sameUser(client) {
+		return client.userUID && client.userUID !== this.userUID;
 	}
 
 	hide(key) {
