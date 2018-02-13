@@ -7,14 +7,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./incoming.component.css']
 })
 export class IncomingComponent {
+
 	clients: FirebaseListObservable<any[]>;
-	selectvalue = "Select";
-	completedvalue = "Completed";
-	selectcolor = "darkgreen";
-	dbUser = "";
-	loggedUser = "";
 	userUID = "";
-	key = "";
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
 		this.userUID = this.afAuth.auth.currentUser.uid;
@@ -27,12 +22,9 @@ export class IncomingComponent {
 	}
 
 	select(key) {
-		this.loggedUser = this.afAuth.auth.currentUser.displayName;
-		this.key = key;
-
-		this
-			.clients.update(key, { 
-				user: this.loggedUser,
+		this.clients
+			.update(key, { 
+				user: this.afAuth.auth.currentUser.displayName,
 				userUID: this.userUID
 			})
 			.then(_ =>
@@ -43,7 +35,10 @@ export class IncomingComponent {
 			);
 	}
 
-	getColor(client) {
+	getColor(client): string {
+		if (client.userUID == "")
+			return 'darkgreen';
+
 		return this.sameUser(client) ? 'red' : 'green';
 	}
 
@@ -56,7 +51,10 @@ export class IncomingComponent {
 	}
 
 	hide(key) {
-		this.clients.update(key, { isCompleted: true })
+		this.clients
+			.update(key, {
+				isCompleted: true
+			})
 			.then(_ =>
 				console.log('Update succeded!')
 			)
