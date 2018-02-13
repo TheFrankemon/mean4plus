@@ -1,8 +1,19 @@
 <div *ngFor="let client of clients | async" id="clients">
 	<div id="client">
 		<input [(ngModel)]="selectcolor">
-		<button id="select" [ngStyle]="{'background-color': selectcolor}" (click)="select(client.$key)">{{ selectvalue }}</button>
-		<button id="completed" (click)="hide(client.$key)">{{ completedvalue }}</button>
+		<button 
+			id="select" 
+			[disabled]="disableButton(client)" 
+			[ngStyle]="{'background-color': getColor(client)}" 
+			(click)="select(client.$key)">
+			Selected <span *ngIf="client.user" > by {{ client.user }}</span>
+		</button>
+		<button 
+			id="completed" 
+			[disabled]="disableButton(client)" 
+			(click)="hide(client.$key)">
+			Completed
+		</button>
 		<h2>{{ client.name }}</h2>
 		<h6>{{ client.ts }}</h6>
 		<img src="{{client.img1}}" alt="image"/>
