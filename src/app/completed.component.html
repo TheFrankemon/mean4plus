@@ -1,3 +1,4 @@
+<br/>
 <input [(ngModel)]="searchText" (keyup)="filter()" placeholder="Search..."/>
 <div *ngFor="let client of filteredclients | async" id="clients">
 	<div id="client">
