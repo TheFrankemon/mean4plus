@@ -2,7 +2,7 @@
 	<div id="client">
 		<button 
 			id="select" 
-			[disabled]="disableButton(client)" 
+			[disabled]="sameUser(client)" 
 			[ngStyle]="{'background-color': getColor(client)}" 
 			(click)="toggleSelect(client.user, client.$key)">
 			<span *ngIf="!client.user">Select</span>
@@ -10,10 +10,12 @@
 		</button>
 		<button 
 			id="completed" 
-			[disabled]="disableButton(client)" 
-			(click)="hide(client.$key)">
+			(click)="hide(client.$key)"
+			*ngIf="client.user && !sameUser(client)">
 			Complete
 		</button>
+		<br/>
+		<br/>
 		<h2>{{ client.name }}</h2>
 		<h6>{{ client.ts }}</h6>
 		<img src="{{client.img1}}" alt="image"/>

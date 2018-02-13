@@ -21,6 +21,7 @@ h6 {
 
 button {
 	width: 40%;
+	float: left;
 }
 
 #select {

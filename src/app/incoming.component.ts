@@ -55,16 +55,12 @@ export class IncomingComponent {
 
 	getColor(client): string {
 		if (!client.userUID)
-			return 'darkgreen';
+			return 'gray';
 
 		return this.sameUser(client) ? 'red' : 'green';
 	}
 
-	disableButton(client) {
-		return this.sameUser(client);
-	}
-
-	private sameUser(client) {
+	sameUser(client) : boolean {
 		return client.userUID && client.userUID !== this.userUID;
 	}
 
