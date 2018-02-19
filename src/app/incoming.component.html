@@ -4,13 +4,13 @@
 			id="select" 
 			[disabled]="sameUser(client)" 
 			[ngStyle]="{'background-color': getColor(client)}" 
-			(click)="toggleSelect(client.user, client.$key)">
+			(click)="toggleSelect(client.user, client)">
 			<span *ngIf="!client.user">Select</span>
 			<span *ngIf="client.user">Selected by<br/>{{ client.user }}</span>
 		</button>
 		<button 
 			id="completed" 
-			(click)="hide(client.$key)"
+			(click)="complete(client.$key, client.name)"
 			*ngIf="client.user && !sameUser(client)">
 			Complete
 		</button>

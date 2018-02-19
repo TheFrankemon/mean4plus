@@ -9,6 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class IncomingComponent {
 
 	clients: FirebaseListObservable<any[]>;
+	eventlog: FirebaseListObservable<any[]>;
 	userUID = "";
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
@@ -19,13 +20,14 @@ export class IncomingComponent {
 				equalTo: false
 			}
 		});
+		this.eventlog = afDB.list('eventlog');
 	}
 
-	toggleSelect(user, key) {
-		!user ? this.select(key) : this.unselect(key) ;
+	toggleSelect(user, client) {
+		!user ? this.select(client.$key, client.name) : this.unselect(client.$key, client.name) ;
 	}
 
-	select(key) {
+	select(key, name) {
 		this.clients
 			.update(key, {
 				user: this.afAuth.auth.currentUser.displayName,
@@ -37,9 +39,20 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
+		
+		this.eventlog
+			.push({
+				client: name,
+				event: "SELECTED",
+				ts: this.getDate(),
+				user: this.afAuth.auth.currentUser.displayName
+			})
+			.then(_ =>
+				console.log('event added!')
+			);
 	}
 
-	unselect(key) {
+	unselect(key, name) {
 		this.clients
 			.update(key, {
 				user: "",
@@ -51,6 +64,29 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
+		
+		this.eventlog
+			.push({
+				client: name,
+				event: "UNSELECTED",
+				ts: this.getDate(),
+				user: this.afAuth.auth.currentUser.displayName
+			})
+			.then(_ =>
+				console.log('event added!')
+			);
+	}
+
+	getDate() : string {
+		//09/01/18 10:12:23
+		var now = new Date();
+		var timestamp = now.getDay() + "/"
+					  + now.getMonth() + "/"
+					  + now.getFullYear().toString().substr(2) + " "
+					  + now.getHours() + ":"
+					  + now.getMinutes() + ":"
+					  + now.getSeconds();
+		return timestamp;
 	}
 
 	getColor(client): string {
@@ -64,7 +100,7 @@ export class IncomingComponent {
 		return client.userUID && client.userUID !== this.userUID;
 	}
 
-	hide(key) {
+	complete(key, name) {
 		this.clients
 			.update(key, {
 				isCompleted: true
@@ -75,5 +111,16 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...'
 			));
+		
+		this.eventlog
+			.push({
+				client: name,
+				event: "COMPLETED",
+				ts: this.getDate(),
+				user: this.afAuth.auth.currentUser.displayName
+			})
+			.then(_ =>
+				console.log('event added!')
+			);
 	}
 }
