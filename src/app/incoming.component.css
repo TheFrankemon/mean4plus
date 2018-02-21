@@ -31,3 +31,8 @@ button {
 #completed {
 	background-color: darkslateblue;
 }
+
+#commentbox {
+	resize: none;
+	width: 80%;
+}

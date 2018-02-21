@@ -14,8 +14,12 @@
 			*ngIf="client.user && !sameUser(client)">
 			Complete
 		</button>
-		<br/>
-		<br/>
+		<br/><br/><br/>
+		<textarea
+			id="commentbox"
+			*ngIf="client.user && !sameUser(client)"
+			placeholder="Add comment...(optional)"
+			[(ngModel)]="comment"></textarea>
 		<h2>{{ client.name }}</h2>
 		<h6>{{ client.ts }}</h6>
 		<img src="{{client.img1}}" alt="image"/>

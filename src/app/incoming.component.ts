@@ -11,6 +11,7 @@ export class IncomingComponent {
 	clients: FirebaseListObservable<any[]>;
 	eventlog: FirebaseListObservable<any[]>;
 	userUID = "";
+	comment = "";
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
 		this.userUID = this.afAuth.auth.currentUser.uid;
@@ -103,14 +104,15 @@ export class IncomingComponent {
 	complete(key, name) {
 		this.clients
 			.update(key, {
-				isCompleted: true
+				isCompleted: true,
+				comment: this.comment
 			})
 			.then(_ =>
 				console.log('Update succeded!')
 			)
 			.catch(err =>
-				console.log(err, 'Something happened at updating...'
-			));
+				console.log(err, 'Something happened at updating...')
+			);
 		
 		this.eventlog
 			.push({
