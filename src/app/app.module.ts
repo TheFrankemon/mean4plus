@@ -11,6 +11,7 @@ import { CompletedComponent } from './completed.component';
 import { UserFormComponent } from './userform.component';
 import { EventLogComponent } from './eventlog.component';
 import { AuthService } from './auth.service';
+import { ReversePipe } from './reverse.pipe';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database-deprecated";
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
 		IncomingComponent,
 		CompletedComponent,
 		UserFormComponent,
-		EventLogComponent
+		EventLogComponent,
+		ReversePipe
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent]

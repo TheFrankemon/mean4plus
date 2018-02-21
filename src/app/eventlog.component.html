@@ -6,7 +6,7 @@
 	<div id="header">CLIENT</div>
 	<div id="header">USER</div>
 </div>	
-<div *ngFor="let event of events | async" id="events">
+<div *ngFor="let event of events | async | reverse" id="events">
 	<div id="event">{{ event.ts }}</div>
 	<div id="event">{{ event.event }}</div>
 	<div id="event">{{ event.client }}</div>
