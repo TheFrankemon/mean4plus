@@ -7,7 +7,7 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 })
 export class CompletedComponent {
 	clients: FirebaseListObservable<any[]>;
-	filteredclients: FirebaseListObservable<any[]>;
+	filteredClients: FirebaseListObservable<any[]>;
 	searchText: string = "";
 
 	constructor(public afDB: AngularFireDatabase) {
@@ -18,12 +18,12 @@ export class CompletedComponent {
 			}
 		});
 
-		this.filteredclients = this.clients;
+		this.filteredClients = this.clients;
 	}
 
 	filter() {
 		if (this.searchText != "") {
-			this.filteredclients = this.afDB.list('clients', {
+			this.filteredClients = this.afDB.list('clients', {
 				query: {
 					orderByChild: 'name',
 					startAt: this.searchText,
@@ -31,7 +31,7 @@ export class CompletedComponent {
 				}
 			});
 		} else {
-			this.filteredclients = this.clients;
+			this.filteredClients = this.clients;
 		}
 			// this.afDB.database.ref('clients')
 			// 	.orderByChild('name')

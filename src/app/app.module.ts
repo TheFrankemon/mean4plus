@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatRadioModule, MatToolbarModule } from '@angular/material';
 
 import { LoginComponent } from './login.component';
 import { IncomingComponent } from './incoming.component';
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
 		HttpModule,
 		RouterModule.forRoot(
 			appRoutes,
-			{ enableTracing: true }
+			{ enableTracing: false } //may be true for console logging
 		),
 		AngularFireModule.initializeApp(config),
 		AngularFireDatabaseModule,
@@ -48,6 +48,7 @@ const appRoutes: Routes = [
 		MatCardModule,
 		MatGridListModule,
 		MatInputModule,
+		MatRadioModule,
 		MatToolbarModule
 	],
 	declarations: [

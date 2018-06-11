@@ -23,7 +23,7 @@ export class AuthService implements CanActivate {
 		this.afAuth.auth.signInWithEmailAndPassword(this.mail, this.pwd)
 			.then(
 				(success) => {
-					console.log(success);
+					//console.log(success);
 					this.router.navigate(['/incoming']);
 					this.isLogged = true;
 				}
