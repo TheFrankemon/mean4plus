@@ -1,14 +1,18 @@
 <br/>
 <br/>
-<div id="events">
-	<div id="header">TIMESTAMP</div>
-	<div id="header">EVENT</div>
-	<div id="header">CLIENT</div>
-	<div id="header">USER</div>
-</div>	
-<div *ngFor="let event of events | async | reverse" id="events">
-	<div id="event">{{ event.ts }}</div>
-	<div id="event">{{ event.event }}</div>
-	<div id="event">{{ event.client }}</div>
-	<div id="event">{{ event.user }}</div>
-</div>
+<mat-card id="events">
+<mat-grid-list cols="4" rowHeight="50px" id="header">
+	<mat-grid-tile><h3>TIMESTAMP</h3></mat-grid-tile>
+	<mat-grid-tile><h3>EVENT</h3></mat-grid-tile>
+	<mat-grid-tile><h3>CLIENT</h3></mat-grid-tile>
+	<mat-grid-tile><h3>USER</h3></mat-grid-tile>
+</mat-grid-list>	
+<mat-grid-list cols="4" rowHeight="30px" id="event">
+	<div *ngFor="let event of events | async | reverse">
+		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.ts }}</mat-grid-tile>
+		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.event }}</mat-grid-tile>
+		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.client }}</mat-grid-tile>
+		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.user }}</mat-grid-tile>
+	</div>
+</mat-grid-list>
+</mat-card>

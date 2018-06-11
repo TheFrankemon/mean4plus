@@ -1,27 +1,29 @@
-img {
-	max-width: 360px;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
 #client {
-	max-width:330px;
-	width: 70%;
+	max-width:250px;
+	text-align: center;
 }
 
 #clients {
 	width: 90%;
 }
 
-h2 {
-	font-size: 1.5vw;
-}
-
-h6 {
-	font-size: 0.7vw;
-}
-
 button {
-	width: 40%;
+	width: 50%;
 	float: left;
+
+	padding: 8px 16px 8px 16px;
+	min-width: 88px;
+	border-radius: 3px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 #select {
@@ -34,5 +36,25 @@ button {
 
 #commentbox {
 	resize: none;
-	width: 80%;
+	width: 100%;
+}
+
+h2 {
+	font-size: 2vw;
+	color: white;
+}
+
+h6 {
+	font-size: 0.7vw;
+	color: white;
+}
+
+@media screen and (max-width: 1150px) {
+	h2 {
+		font-size: 20px;
+	}
+
+	h6 {
+		font-size: 14px;
+	}
 }

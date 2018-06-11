@@ -1,14 +1,22 @@
 <br/>
 <br/>
 <br/>
-<div class="form-container">
-    <input type="text" placeholder="First Name" [(ngModel)]="firstname" required>
-    <br/>
-    <input type="text" placeholder="Last Name" [(ngModel)]="lastname" required>
-    <br/>
-    <input type="text" placeholder="Email address" [(ngModel)]="email" required>
-    <br/>
-    <input type="password" placeholder="Password" [(ngModel)]="password" required>
-    <br/>
-    <button (click)="createUser()">Guardar</button>
-</div>
+<mat-card id="form-container">
+	<mat-input-container>
+		<input matInput type="text" placeholder="First Name" autocomplete="false" [(ngModel)]="firstname" required>
+	</mat-input-container>
+	<br/>
+	<mat-input-container>
+		<input matInput type="text" placeholder="Last Name" autocomplete="false" [(ngModel)]="lastname" required>
+	</mat-input-container>
+	<br/>
+	<mat-input-container>
+		<input matInput type="text" placeholder="Email address" autocomplete="new-password" [(ngModel)]="email" required>
+	</mat-input-container>
+	<br/>
+	<mat-input-container>
+		<input matInput type="password" placeholder="Password" autocomplete="new-password" [(ngModel)]="password" required>
+	</mat-input-container>
+	<br/>
+	<button mat-raised-button color="primary" (click)="createUser()">Guardar</button>
+</mat-card>

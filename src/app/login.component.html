@@ -1,7 +1,13 @@
-<div class="form-container">
-	<input type="text" placeholder="Email address.." [(ngModel)]="email" required>
-	<br/>
-	<input type="password" placeholder="Password" [(ngModel)]="password" required>
-	<br/>
-	<button (click)="login()"> Login </button>
-</div>
+<mat-card class="login-card">
+	<img width="30px" src="../assets/LOGO.png" alt="UPB Smartbooth">
+	<br><br>
+	<mat-input-container>
+		<input matInput type="text" placeholder="Email" required [(ngModel)]="email">
+	</mat-input-container>
+	<br><br>
+	<mat-input-container>
+		<input matInput type="password" placeholder="Password" required [(ngModel)]="password">
+	</mat-input-container>
+	<br><br>
+	<button mat-raised-button color="primary" (click)="login()">Login</button>
+</mat-card>

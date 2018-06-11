@@ -1,11 +1,15 @@
 <br/>
-<input [(ngModel)]="searchText" (keyup)="filter()" placeholder="Search..."/>
+<mat-card id="searchbar">
+<mat-input-container>
+	<input matInput [(ngModel)]="searchText" (keyup)="filter()" placeholder="Search..."/>
+</mat-input-container>
+</mat-card>
 <div *ngFor="let client of filteredclients | async" id="clients">
-	<div id="client">
+	<mat-card id="client">
 		<h2>{{ client.name }}</h2>
 		<h6>{{ client.ts }}</h6>
-		<img src="{{client.img1}}" alt="image"/>
-		<img src="{{client.img2}}" alt="image"/>
+		<img mat-card-image src="{{client.img1}}" alt="image"/>
+		<img mat-card-image src="{{client.img2}}" alt="image"/>
 		<p>Notes:<br/>{{ client.comment }}</p>
-	</div>
+	</mat-card>
 </div>

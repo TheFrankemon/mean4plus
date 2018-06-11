@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatToolbarModule } from '@angular/material';
+
 import { LoginComponent } from './login.component';
 import { IncomingComponent } from './incoming.component';
 import { CompletedComponent } from './completed.component';
@@ -39,7 +42,13 @@ const appRoutes: Routes = [
 		),
 		AngularFireModule.initializeApp(config),
 		AngularFireDatabaseModule,
-		AngularFireAuthModule
+		AngularFireAuthModule,
+		BrowserAnimationsModule,
+		MatButtonModule,
+		MatCardModule,
+		MatGridListModule,
+		MatInputModule,
+		MatToolbarModule
 	],
 	declarations: [
 		AppComponent,

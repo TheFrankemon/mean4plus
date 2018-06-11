@@ -1,14 +1,27 @@
-img {
-	max-width: 300px;
-}
-
 #client {
 	max-width:200px;
 	width: 30%;
+	text-align: center;
+	color: white;
 }
 
 #clients {
 	width: 90%;
+}
+
+#searchbar {
+	min-width: 200px;
+	width: 30%;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+
+input {
+	color: black;
+}
+
+.mat-input-container {
+	width:400px !important;
 }
 
 h2 {

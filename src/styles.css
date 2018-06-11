@@ -1,34 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
-div {
-	text-align: center;
-	font-family: 'Ubuntu', sans-serif;
-	color: #EEE;
-}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-    background-color: black;
-}
-
-button {
-	background-color: #666;
-	color: #BBB;
-	border: none;
-	padding: 5px 10px;
-	border-radius: 4px;
-	cursor: pointer;
-	cursor: hand;
-}
-
-button:hover {
-	background-color: #BBB;
-	color: #EEE;
-}
-
-.active {
-	background-color: #888;
-	color: orange;
+	background-color: black;
 }
 
 img {
@@ -43,20 +17,15 @@ img {
 #client {
 	float: left;
 	background:#555;
-	margin: 0.5em auto;
-	border: 2px solid black;
-	border-radius: 10px;
+	margin: 0.5em 0.7em;
 }
 
 #events {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	width: 80%;
+	margin: 0 auto;
 }
 
 #event {
-	background:#555;
-	border: 2px solid black;
-	border-radius: 1px;
 	text-align: left;
 }
 
@@ -65,8 +34,35 @@ img {
 }
 
 #header {
-	background:#000;
-	border: 2px solid black;
-	border-radius: 1px;
+	background-color: #FF4081;
 	text-align: center;
+	color: white;
+}
+
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+.login-card {
+	width: 250px;
+	margin: 15em auto;
+}
+
+.login-card img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#form-container {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.login-card input, #form-container input {
+	color: black;
+}
+
+#form-container button {
+	margin: 20px 10px;
 }
