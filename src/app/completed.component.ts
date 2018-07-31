@@ -6,24 +6,24 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
   styleUrls: ['./completed.component.css']
 })
 export class CompletedComponent {
-	clients: FirebaseListObservable<any[]>;
-	filteredClients: FirebaseListObservable<any[]>;
+	visitors: FirebaseListObservable<any[]>;
+	filteredVisitors: FirebaseListObservable<any[]>;
 	searchText: string = "";
 
 	constructor(public afDB: AngularFireDatabase) {
-		this.clients = afDB.list('clients', {
+		this.visitors = afDB.list('visitors', {
 			query: {
 				orderByChild: 'isCompleted',
 				equalTo: true
 			}
 		});
 
-		this.filteredClients = this.clients;
+		this.filteredVisitors = this.visitors;
 	}
 
 	filter() {
 		if (this.searchText != "") {
-			this.filteredClients = this.afDB.list('clients', {
+			this.filteredVisitors = this.afDB.list('visitors', {
 				query: {
 					orderByChild: 'name',
 					startAt: this.searchText,
@@ -31,15 +31,15 @@ export class CompletedComponent {
 				}
 			});
 		} else {
-			this.filteredClients = this.clients;
+			this.filteredVisitors = this.visitors;
 		}
-			// this.afDB.database.ref('clients')
+			// this.afDB.database.ref('visitors')
 			// 	.orderByChild('name')
 			// 	.startAt(this.searchText)
 			// 	.endAt(this.searchText+"\uf8ff")
 			// 	.once("value")
 			// 	.then(snapshot => {
-			// 		this.filteredclients = snapshot
+			// 		this.filteredVisitors = snapshot
 			// 	});
 	}
 }

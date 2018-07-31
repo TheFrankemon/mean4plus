@@ -1,11 +1,11 @@
-#client {
+#visitor {
 	max-width:200px;
 	width: 30%;
 	text-align: center;
 	color: white;
 }
 
-#clients {
+#visitors {
 	width: 90%;
 }
 

@@ -8,14 +8,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class IncomingComponent {
 
-	clients: FirebaseListObservable<any[]>;
+	visitors: FirebaseListObservable<any[]>;
 	eventlog: FirebaseListObservable<any[]>;
 	userUID = "";
 	comment = "";
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
 		this.userUID = this.afAuth.auth.currentUser.uid;
-		this.clients = afDB.list('clients', {
+		this.visitors = afDB.list('visitors', {
 			query: {
 				orderByChild: 'isCompleted',
 				equalTo: false
@@ -24,12 +24,12 @@ export class IncomingComponent {
 		this.eventlog = afDB.list('eventlog');
 	}
 
-	toggleSelect(user, client) {
-		!user ? this.select(client.$key, client.name) : this.unselect(client.$key, client.name) ;
+	toggleSelect(user, visitor) {
+		!user ? this.select(visitor.$key, visitor.name) : this.unselect(visitor.$key, visitor.name) ;
 	}
 
 	select(key, name) {
-		this.clients
+		this.visitors
 			.update(key, {
 				user: this.afAuth.auth.currentUser.displayName,
 				userUID: this.userUID
@@ -43,7 +43,7 @@ export class IncomingComponent {
 		
 		this.eventlog
 			.push({
-				client: name,
+				visitor: name,
 				event: "SELECTED",
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName
@@ -54,7 +54,7 @@ export class IncomingComponent {
 	}
 
 	unselect(key, name) {
-		this.clients
+		this.visitors
 			.update(key, {
 				user: "",
 				userUID: ""
@@ -68,7 +68,7 @@ export class IncomingComponent {
 		
 		this.eventlog
 			.push({
-				client: name,
+				visitor: name,
 				event: "UNSELECTED",
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName
@@ -78,8 +78,8 @@ export class IncomingComponent {
 			);
 	}
 
-	getDate() : string {
-		//09/01/18 10:12:23
+	getDate(): string {
+		// 09/01/18 10:12:23
 		var now = new Date();
 		var timestamp = (now.getDate() < 10 ? "0" + now.getDate() : now.getDate()) + "/"
 					  + ((now.getMonth() + 1) < 10 ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1)) + "/"
@@ -90,19 +90,19 @@ export class IncomingComponent {
 		return timestamp;
 	}
 
-	getColor(client): string {
-		if (!client.userUID)
+	getColor(visitor): string {
+		if (!visitor.userUID)
 			return 'gray';
 
-		return this.sameUser(client) ? 'red' : 'green';
+		return this.sameUser(visitor) ? 'red' : 'green';
 	}
 
-	sameUser(client) : boolean {
-		return client.userUID && client.userUID !== this.userUID;
+	sameUser(visitor): boolean {
+		return visitor.userUID && visitor.userUID !== this.userUID;
 	}
 
 	complete(key, name) {
-		this.clients
+		this.visitors
 			.update(key, {
 				isCompleted: true,
 				comment: this.comment
@@ -116,7 +116,7 @@ export class IncomingComponent {
 		
 		this.eventlog
 			.push({
-				client: name,
+				visitor: name,
 				event: "COMPLETED",
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName

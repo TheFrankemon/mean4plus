@@ -9,12 +9,12 @@ img {
 	width: 90%;
 }
 
-#clients {
+#visitors {
 	margin: 0 auto;
 	padding: 0;
 }
 
-#client {
+#visitor {
 	float: left;
 	background:#555;
 	margin: 0.5em 0.7em;

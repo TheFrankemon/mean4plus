@@ -4,7 +4,7 @@
 	<mat-radio-group [(ngModel)]="selectedFilter">
 		<mat-radio-button value="ts">Timestamp</mat-radio-button>
 		<mat-radio-button value="event">Event</mat-radio-button>
-		<mat-radio-button value="client">Client</mat-radio-button>
+		<mat-radio-button value="visitor">Visitor</mat-radio-button>
 		<mat-radio-button value="user">User</mat-radio-button>
 	</mat-radio-group>
 	<mat-input-container>
@@ -16,14 +16,14 @@
 <mat-grid-list cols="4" rowHeight="50px" id="header">
 	<mat-grid-tile><h3>TIMESTAMP</h3></mat-grid-tile>
 	<mat-grid-tile><h3>EVENT</h3></mat-grid-tile>
-	<mat-grid-tile><h3>CLIENT</h3></mat-grid-tile>
+	<mat-grid-tile><h3>VISITOR</h3></mat-grid-tile>
 	<mat-grid-tile><h3>USER</h3></mat-grid-tile>
 </mat-grid-list>	
 <mat-grid-list cols="4" rowHeight="30px" id="event">
 	<div *ngFor="let event of filteredEvents | async | reverse">
 		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.ts }}</mat-grid-tile>
 		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.event }}</mat-grid-tile>
-		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.client }}</mat-grid-tile>
+		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.visitor }}</mat-grid-tile>
 		<mat-grid-tile [style.border-bottom]="'1px dashed #bbb'">{{ event.user }}</mat-grid-tile>
 	</div>
 </mat-grid-list>

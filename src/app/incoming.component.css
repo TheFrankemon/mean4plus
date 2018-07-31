@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
-#client {
+#visitor {
 	max-width:250px;
 	text-align: center;
 }
 
-#clients {
+#visitors {
 	width: 90%;
 }
 

@@ -1,26 +1,26 @@
-<div *ngFor="let client of clients | async" id="clients">
-	<mat-card id="client">
+<div *ngFor="let visitor of visitors | async" id="visitors">
+	<mat-card id="visitor">
 		<button id="select" 
-			[disabled]="sameUser(client)"
-			[ngStyle]="{'background-color': getColor(client)}"
-			(click)="toggleSelect(client.user, client)">
-			<span *ngIf="!client.user">Select</span>
-			<span *ngIf="client.user">Selected by<br/>{{ client.user }}</span>
+			[disabled]="sameUser(visitor)"
+			[ngStyle]="{'background-color': getColor(visitor)}"
+			(click)="toggleSelect(visitor.user, visitor)">
+			<span *ngIf="!visitor.user">Select</span>
+			<span *ngIf="visitor.user">Selected by<br/>{{ visitor.user }}</span>
 		</button>
 		<button id="completed" 
-			(click)="complete(client.$key, client.name)"
-			*ngIf="client.user && !sameUser(client)">
+			(click)="complete(visitor.$key, visitor.name)"
+			*ngIf="visitor.user && !sameUser(visitor)">
 			Complete
 		</button>
 		<br/><br/>
-		<mat-input-container *ngIf="client.user && !sameUser(client)">
+		<mat-input-container *ngIf="visitor.user && !sameUser(visitor)">
 			<textarea matInput id="commentbox"
 				placeholder="Comment (optional)"
 				[(ngModel)]="comment"></textarea>
 		</mat-input-container>
-		<h2>{{ client.name }}</h2>
-		<h6>{{ client.ts }}</h6>
-		<img mat-card-image src="{{client.img1}}" alt="image"/>
-		<img mat-card-image src="{{client.img2}}" alt="image"/>
+		<h2>{{ visitor.name }}</h2>
+		<h6>{{ visitor.ts }}</h6>
+		<img mat-card-image src="{{visitor.img1}}" alt="image"/>
+		<img mat-card-image src="{{visitor.img2}}" alt="image"/>
 	</mat-card>
 </div>

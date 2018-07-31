@@ -4,12 +4,12 @@
 	<input matInput [(ngModel)]="searchText" (keyup)="filter()" placeholder="Search..."/>
 </mat-input-container>
 </mat-card>
-<div *ngFor="let client of filteredClients | async" id="clients">
-	<mat-card id="client">
-		<h2>{{ client.name }}</h2>
-		<h6>{{ client.ts }}</h6>
-		<img mat-card-image src="{{client.img1}}" alt="image"/>
-		<img mat-card-image src="{{client.img2}}" alt="image"/>
-		<p>Notes:<br/>{{ client.comment }}</p>
+<div *ngFor="let visitor of filteredVisitors | async" id="visitors">
+	<mat-card id="visitor">
+		<h2>{{ visitor.name }}</h2>
+		<h6>{{ visitor.ts }}</h6>
+		<img mat-card-image src="{{visitor.img1}}" alt="image"/>
+		<img mat-card-image src="{{visitor.img2}}" alt="image"/>
+		<p>Notes:<br/>{{ visitor.comment }}</p>
 	</mat-card>
 </div>
