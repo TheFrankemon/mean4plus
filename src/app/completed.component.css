@@ -31,3 +31,13 @@ h2 {
 h6 {
 	font-size: 0.7vw;
 }
+
+@media screen and (max-width: 1150px) {
+	h2 {
+		font-size: 20px;
+	}
+
+	h6 {
+		font-size: 14px;
+	}
+}

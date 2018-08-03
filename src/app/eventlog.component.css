@@ -1,0 +1,23 @@
+#events {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#event {
+	text-align: left;
+}
+
+#event:nth-child(odd) {
+	background: #666;
+}
+
+
+@media screen and (max-width: 1150px) {
+	h3 {
+		font-size: 16px;
+	}
+
+	#event	 {
+		font-size: 14px;
+	}
+}

@@ -20,19 +20,6 @@ img {
 	margin: 0.5em 0.7em;
 }
 
-#events {
-	width: 80%;
-	margin: 0 auto;
-}
-
-#event {
-	text-align: left;
-}
-
-#event:nth-child(odd) {
-	background: #666;
-}
-
 #header {
 	background-color: #FF4081;
 	text-align: center;

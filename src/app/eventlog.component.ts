@@ -3,7 +3,8 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 import { ReversePipe } from './reverse.pipe';
 
 @Component({
-	templateUrl: './eventlog.component.html'
+	templateUrl: './eventlog.component.html',
+	styleUrls: ['./eventlog.component.css']
 })
 export class EventLogComponent {
 	events: FirebaseListObservable<any[]>;
