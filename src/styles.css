@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Product+Sans');
 
 body {
 	background-color: black;
@@ -30,24 +31,46 @@ img {
 	flex: 1 1 auto;
 }
 
+mat-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .login-card {
 	width: 250px;
 	margin: 15em auto;
+	position: relative;
 }
 
-.login-card img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.appname {
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, 0%);
+	font-family: 'Product Sans', sans-serif;
+	font-size: 32px;
+}
+
+.login-card mat-input-container {
+	width:100%;
+}
+
+.login-card input, #form-container input {
+	color: black;
+}
+
+.login-card button {
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, 0%);
 }
 
 #form-container {
 	width: 300px;
 	margin: 0 auto;
-}
-
-.login-card input, #form-container input {
-	color: black;
 }
 
 #form-container button {

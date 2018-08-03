@@ -2,11 +2,13 @@
 	<mat-toolbar color="primary" *ngIf="authService.isLogged">
 		<span>{{displayName}} @KIAC-DAAE</span>
 		<span class="example-spacer"></span>
-		<button mat-raised-button color="primary" routerLink="/incoming" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
-		<button mat-raised-button color="primary" routerLink="/completed" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Completed</button>
-		<button mat-raised-button color="primary" *ngIf="authService.checkRole()" routerLink="/newUser" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Add User</button>
-		<button mat-raised-button color="primary" *ngIf="authService.checkRole()" routerLink="/eventLog" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Event Log</button>
-		<button mat-raised-button color="primary" (click)="authService.logOut()"> Logout </button>
+		<div class="buttons">
+			<button mat-raised-button color="primary" routerLink="/incoming" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Incoming</button>
+			<button mat-raised-button color="primary" routerLink="/completed" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Completed</button>
+			<button mat-raised-button color="primary" *ngIf="authService.checkRole()" routerLink="/newUser" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Add User</button>
+			<button mat-raised-button color="primary" *ngIf="authService.checkRole()" routerLink="/eventLog" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact: true}">Event Log</button>
+			<button mat-raised-button color="primary" (click)="authService.logOut()"> Logout </button>
+		</div>
 	</mat-toolbar>
 	<router-outlet></router-outlet>
 </div>

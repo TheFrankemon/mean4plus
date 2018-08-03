@@ -1,6 +1,7 @@
 <mat-card class="login-card">
-	<img width="30px" src="../assets/LOGO.png" alt="KIAC-DAAE">
-	<br><br>
+	<!-- <img width="30px" src="../assets/LOGO.png" alt="KIAC-DAAE"> -->
+	<span class="appname">Web for KIAC</span>
+	<br><br><br>
 	<mat-input-container>
 		<input matInput type="text" placeholder="Email" required [(ngModel)]="email">
 	</mat-input-container>
@@ -10,4 +11,5 @@
 	</mat-input-container>
 	<br><br>
 	<button mat-raised-button color="primary" (click)="login()">Login</button>
+	<br><br>
 </mat-card>
