@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 @Component({
   templateUrl: './completed.component.html',
@@ -8,7 +8,7 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 export class CompletedComponent {
 	visitors: FirebaseListObservable<any[]>;
 	filteredVisitors: FirebaseListObservable<any[]>;
-	searchText: string = "";
+	searchText = '';
 
 	constructor(public afDB: AngularFireDatabase) {
 		this.visitors = afDB.list('visitors', {
@@ -22,17 +22,17 @@ export class CompletedComponent {
 	}
 
 	filter() {
-		if (this.searchText != "") {
+		if (this.searchText !== '')
 			this.filteredVisitors = this.afDB.list('visitors', {
 				query: {
 					orderByChild: 'name',
 					startAt: this.searchText,
-					endAt: this.searchText + "\uf8ff"
+					endAt: this.searchText + '\uf8ff'
 				}
 			});
-		} else {
+		else
 			this.filteredVisitors = this.visitors;
-		}
+
 			// this.afDB.database.ref('visitors')
 			// 	.orderByChild('name')
 			// 	.startAt(this.searchText)

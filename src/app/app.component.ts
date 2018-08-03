@@ -8,9 +8,9 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 	templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-	displayName = "";
+	displayName = '';
 
-	constructor(private authService:AuthService, private afAuth:AngularFireAuth) {}
+	constructor(private authService: AuthService, private afAuth: AngularFireAuth) {}
 
 	ngOnInit() {
 		this.afAuth.auth.onAuthStateChanged((user) => {

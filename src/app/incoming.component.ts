@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
-  templateUrl: './incoming.component.html',
-  styleUrls: ['./incoming.component.css']
+	templateUrl: './incoming.component.html',
+	styleUrls: ['./incoming.component.css']
 })
 export class IncomingComponent {
 
 	visitors: FirebaseListObservable<any[]>;
 	eventlog: FirebaseListObservable<any[]>;
-	userUID = "";
-	comment = "";
+	userUID = '';
+	comment = '';
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth) {
 		this.userUID = this.afAuth.auth.currentUser.uid;
@@ -40,11 +40,11 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
-		
+
 		this.eventlog
 			.push({
 				visitor: name,
-				event: "SELECTED",
+				event: 'SELECTED',
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName
 			})
@@ -56,8 +56,8 @@ export class IncomingComponent {
 	unselect(key, name) {
 		this.visitors
 			.update(key, {
-				user: "",
-				userUID: ""
+				user: '',
+				userUID: ''
 			})
 			.then(_ =>
 				console.log('Update succeded!')
@@ -65,11 +65,11 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
-		
+
 		this.eventlog
 			.push({
 				visitor: name,
-				event: "UNSELECTED",
+				event: 'UNSELECTED',
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName
 			})
@@ -80,13 +80,13 @@ export class IncomingComponent {
 
 	getDate(): string {
 		// 09/01/18 10:12:23
-		var now = new Date();
-		var timestamp = (now.getDate() < 10 ? "0" + now.getDate() : now.getDate()) + "/"
-					  + ((now.getMonth() + 1) < 10 ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1)) + "/"
-					  + now.getFullYear().toString().substr(2) + " "
-					  + (now.getHours() < 10 ? "0" + now.getHours() : now.getHours()) + ":"
-					  + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes()) + ":"
-					  + (now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds());
+		const now = new Date();
+		const timestamp = (now.getDate() < 10 ? '0' + now.getDate() : now.getDate()) + '/'
+					  + ((now.getMonth() + 1) < 10 ? '0' + (now.getMonth() + 1) : (now.getMonth() + 1)) + '/'
+					  + now.getFullYear().toString().substr(2) + ' '
+					  + (now.getHours() < 10 ? '0' + now.getHours() : now.getHours()) + ':'
+					  + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()) + ':'
+					  + (now.getSeconds() < 10 ? '0' + now.getSeconds() : now.getSeconds());
 		return timestamp;
 	}
 
@@ -113,11 +113,11 @@ export class IncomingComponent {
 			.catch(err =>
 				console.log(err, 'Something happened at updating...')
 			);
-		
+
 		this.eventlog
 			.push({
 				visitor: name,
-				event: "COMPLETED",
+				event: 'COMPLETED',
 				ts: this.getDate(),
 				user: this.afAuth.auth.currentUser.displayName
 			})

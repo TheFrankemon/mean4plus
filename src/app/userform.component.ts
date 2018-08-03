@@ -4,15 +4,15 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 import { AuthService } from './auth.service';
 
 @Component({
-  templateUrl: './userform.component.html'
+	templateUrl: './userform.component.html'
 })
 export class UserFormComponent {
 	users: FirebaseListObservable<any[]>;
-	firstname = "";
-	lastname = "";
-	email = "";
-	password = "";
-	uid = "";
+	firstname = '';
+	lastname = '';
+	email = '';
+	password = '';
+	uid = '';
 
 	constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth, private authService: AuthService) {
 		this.users = afDB.list('users', {
@@ -27,18 +27,18 @@ export class UserFormComponent {
 		this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
 			.then((userRecord) => {
 				// See the UserRecord reference doc for the contents of userRecord.
-				console.log("Successfully created new user:", userRecord.uid);
+				console.log('Successfully created new user:', userRecord.uid);
 				this.afDB.database.ref('users/' + userRecord.uid).set({
 					isAdmin: false
 				});
 
-				let dname = this.firstname + " " + this.lastname;
+				const dname = this.firstname + ' ' + this.lastname;
 				userRecord.updateProfile({
 					displayName: dname
-				})
+				});
 			})
 			.catch((error) => {
-				console.log("Error creating new user:", error.code, error.message);
+				console.log('Error creating new user:', error.code, error.message);
 			});
 
 		this.authService.logOut();

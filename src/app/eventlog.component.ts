@@ -3,13 +3,13 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 import { ReversePipe } from './reverse.pipe';
 
 @Component({
-  templateUrl: './eventlog.component.html'
+	templateUrl: './eventlog.component.html'
 })
 export class EventLogComponent {
 	events: FirebaseListObservable<any[]>;
 	filteredEvents: FirebaseListObservable<any[]>;
 	selectedFilter: string;
-	searchText: string = "";
+	searchText = '';
 
 	constructor(public afDB: AngularFireDatabase) {
 		this.events = afDB.list('eventlog');
@@ -17,16 +17,15 @@ export class EventLogComponent {
 	}
 
 	filter() {
-		if (this.searchText != "" && this.selectedFilter != "") {
+		if (this.searchText !== '' && this.selectedFilter !== '')
 			this.filteredEvents = this.afDB.list('eventlog', {
 				query: {
 					orderByChild: this.selectedFilter,
 					startAt: this.searchText,
-					endAt: this.searchText + "\uf8ff"
+					endAt: this.searchText + '\uf8ff'
 				}
 			});
-		} else {
+		else
 			this.filteredEvents = this.events;
-		}
 	}
 }

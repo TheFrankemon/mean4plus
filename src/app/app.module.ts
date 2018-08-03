@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatRadioModule, MatToolbarModule } from '@angular/material';
@@ -16,10 +16,10 @@ import { EventLogComponent } from './eventlog.component';
 import { AuthService } from './auth.service';
 import { ReversePipe } from './reverse.pipe';
 
-import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from "angularfire2/database-deprecated";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import * as c from "./firebaseconfig.json";
+import * as c from './firebaseconfig.json';
 
 const config = (<any>c);
 const appRoutes: Routes = [
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
 		HttpModule,
 		RouterModule.forRoot(
 			appRoutes,
-			{ enableTracing: false } //may be true for console logging
+			{ enableTracing: false } // may be true for console logging
 		),
 		AngularFireModule.initializeApp(config),
 		AngularFireDatabaseModule,

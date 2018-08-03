@@ -5,10 +5,10 @@ import { AuthService } from './auth.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-	email = "";
-	password = "";
+	email = '';
+	password = '';
 
-	constructor(private authService : AuthService) {}
+	constructor(private authService: AuthService) {}
 
 	login() {
 		this.authService.logIn(this.email, this.password);
